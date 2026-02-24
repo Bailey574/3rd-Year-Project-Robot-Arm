@@ -17,7 +17,7 @@ void setup() {
   pinMode(S3, OUTPUT);
   pinMode(OUT, INPUT);
 
-  // 20% frequency scaling
+  
   digitalWrite(S0, HIGH);
   digitalWrite(S1, LOW);
 
@@ -25,25 +25,25 @@ void setup() {
 }
 
 void loop() {
-  // ----- RED -----
+  
   digitalWrite(S2, LOW);
   digitalWrite(S3, LOW);
   delay(50);
   redFreq = pulseIn(OUT, LOW);
 
-  // ----- GREEN -----
+  
   digitalWrite(S2, HIGH);
   digitalWrite(S3, HIGH);
   delay(50);
   greenFreq = pulseIn(OUT, LOW);
 
-  // ----- BLUE -----
+  
   digitalWrite(S2, LOW);
   digitalWrite(S3, HIGH);
   delay(50);
   blueFreq = pulseIn(OUT, LOW);
 
-  // ---- Classification ----
+  
   String detectedColor = "Unknown";
 
   if (redFreq < greenFreq && redFreq < blueFreq) {
@@ -56,7 +56,7 @@ void loop() {
       detectedColor = "BLUE";
   }
 
-  // ---- Print Results ----
+  
   Serial.print("R: "); Serial.print(redFreq);
   Serial.print(" G: "); Serial.print(greenFreq);
   Serial.print(" B: "); Serial.print(blueFreq);
