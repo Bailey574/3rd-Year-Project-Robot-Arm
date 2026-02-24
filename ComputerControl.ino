@@ -2,21 +2,21 @@
 
 Servo myServo, myServo2, myServo3, myServo4, myServo5, myServo6;
 
-// ---- HOME POSITIONS ----
+
 const int HOME_S1 = 65;
 const int HOME_S3 = 45;
 const int HOME_S4 = 90;
 const int HOME_S5 = 34;
 const int HOME_S6 = 76;
 
-// ---- current angles ----
+
 int currentS1 = HOME_S1;
 int currentS3 = HOME_S3;
 int currentS4 = HOME_S4;
 int currentS5 = HOME_S5;
 int currentS6 = HOME_S6;
 
-// ---- smooth movement for a single servo ----
+
 void moveServoSmooth(Servo &servo, int fromAngle, int toAngle, int stepDelay = 10) {
   if (fromAngle < toAngle) {
     for (int a = fromAngle; a <= toAngle; a++) {
@@ -31,7 +31,7 @@ void moveServoSmooth(Servo &servo, int fromAngle, int toAngle, int stepDelay = 1
   }
 }
 
-// ---- smooth movement for mirrored servos ----
+
 void moveServoMirrored(Servo &s1, Servo &s2, int fromAngle, int toAngle, int stepDelay = 10) {
   if (fromAngle < toAngle) {
     for (int a = fromAngle; a <= toAngle; a++) {
@@ -48,7 +48,7 @@ void moveServoMirrored(Servo &s1, Servo &s2, int fromAngle, int toAngle, int ste
   }
 }
 
-// ---- move all servos to HOME position ----
+
 void goHome() {
   moveServoMirrored(myServo, myServo2, currentS1, HOME_S1);
   currentS1 = HOME_S1;
@@ -76,7 +76,7 @@ void setup() {
   myServo5.attach(6);
   myServo6.attach(11);
 
-  goHome();   // move to startup pose
+  goHome();   
 
   Serial.println("Ready. Use 'servoX angle' or 'home'");
 }
@@ -86,7 +86,7 @@ void loop() {
     String cmd = Serial.readStringUntil('\n');
     cmd.trim();
 
-    // ---- HOME COMMAND ----
+    
     if (cmd == "home") {
       goHome();
       Serial.println("Moved to HOME position");
