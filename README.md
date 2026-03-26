@@ -14,7 +14,7 @@ Once the code is uploaded the user will enter a state machine will options servo
 <img width="1093" height="508" alt="image" src="https://github.com/user-attachments/assets/d7860f68-99e5-4b9b-9bb7-61ff305d472f" />
 The first state introduced control of each servo via computer using the serial monitor; the desired angle is typed, and the servo moves smoothly to this desired angle. Ethier a servo with angle is typed "servo1 76" or a location "red2. Type "servo" in serial to enter this state. By default robot moves to "home" state on startup and entering this state.
 
-The other state of the software is scan mode, responsible for the main function of the robot to sort bricks by size and colour. Enter "scan" to enter this state. Place brick before entering this state. The robot will scan the the brick to identity size and colour 
+The other state of the software is scan mode, responsible for the main function of the robot to sort bricks by size and colour. Enter "scanmode" to enter this state. Place brick before entering this state. The robot will scan the the brick to identity size and colour, then the arm will pick up and place the correct location. Place another brick and enter "scanmode" to repeat.
 
 Technical Details
 Tutorial blogs [15] and [16] provided a reference for writing code effectively for TC3200 and HC-SR04.
