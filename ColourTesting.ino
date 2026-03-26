@@ -1,3 +1,4 @@
+//Code to test TCS3200 sensor
 #define S0 2
 #define S1 4
 #define S2 7
