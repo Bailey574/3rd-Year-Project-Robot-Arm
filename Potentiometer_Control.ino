@@ -1,3 +1,4 @@
+//This code was used in testing stage potentiometer values are mapped to servo movements
 #include <Servo.h>
 
 Servo myServo, myServo2, myServo3, myServo4, myServo5, myServo6;
@@ -7,7 +8,7 @@ int potPin2 = A1;
 int potPin3 = A2;
 int potPin4 = A3;
 int potPin5 = A4;   
-
+//Each pin attached
 void setup() {
   myServo.attach(9);
   myServo2.attach(10);
@@ -16,7 +17,7 @@ void setup() {
   myServo5.attach(6);
   myServo6.attach(11);   
 }
-
+//Loop maps values to servos
 void loop() {
 
  
