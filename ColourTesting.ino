@@ -22,7 +22,7 @@ void setup() {
   digitalWrite(S0, HIGH);
   digitalWrite(S1, LOW);
 
-  Serial.println("TCS3200 RED/GREEN/BLUE Detection Ready");
+  
 }
 
 void loop() {
