@@ -1,3 +1,4 @@
+//Code for testing HC-SR04
 #define TRIG_PIN 13
 #define ECHO_PIN A0
 
