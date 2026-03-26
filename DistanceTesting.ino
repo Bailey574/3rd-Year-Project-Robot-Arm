@@ -1,4 +1,4 @@
-
+//Code used to test distance sensors
 #define S0 2
 #define S1 4
 #define S2 7
@@ -19,7 +19,7 @@ int distance;
 void setup() {
   Serial.begin(9600);
 
-  
+  //Pin assignment
   pinMode(S0, OUTPUT);
   pinMode(S1, OUTPUT);
   pinMode(S2, OUTPUT);
@@ -34,11 +34,11 @@ void setup() {
   pinMode(TRIG_PIN, OUTPUT);
   pinMode(ECHO_PIN, INPUT);
 
-  Serial.println("LEGO Colour + Distance Detection Ready");
+  
 }
 
 void loop() {
-  
+  //Send pulses to read colour
   digitalWrite(S2, LOW);
   digitalWrite(S3, LOW);
   delay(50);
@@ -58,7 +58,7 @@ void loop() {
 
   
   String detectedColor = "Unknown";
-
+  //Detects colour based on domiant colour
   if (redFreq < greenFreq && redFreq < blueFreq) {
       detectedColor = "RED";
   }
@@ -76,12 +76,12 @@ void loop() {
   delayMicroseconds(10);
   digitalWrite(TRIG_PIN, LOW);
 
-  
+  //Sends pulse and meeasures time of flight
   duration = pulseIn(ECHO_PIN, HIGH);
 
   
-  distance = duration * 0.034 / 2;
-
+  distance = duration * 0.034 / 2; 
+  //Prints colour frequency and distance
   
   Serial.print("R: "); Serial.print(redFreq);
   Serial.print(" G: "); Serial.print(greenFreq);
