@@ -17,6 +17,7 @@ The first state introduced control of each servo via computer using the serial m
 The other state of the software is scan mode, responsible for the main function of the robot to sort bricks by size and colour. Enter "scanmode" to enter this state. Place brick before entering this state. The robot will scan the the brick to identity size and colour, then the arm will pick up and place the correct location. Place another brick and enter "scanmode" to repeat.
 
 Technical Details
+
 Tutorial blogs [15] and [16] provided a reference for writing code effectively for TC3200 and HC-SR04.
 [15] projecthub.arduino.cc. (n.d.). Color Detection Using TCS3200/230. [online] Available at:
 https://projecthub.arduino.cc/SurtrTech/color-detection-using-tcs3200230-a1e463 [Accessed 5 Jan. 2026].
