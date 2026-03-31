@@ -1,3 +1,4 @@
+//Identical to DataServo but desired angles are printed
 #include <Servo.h>
 
 Servo myServo, myServo2, myServo3, myServo4, myServo5, myServo6;
@@ -15,7 +16,7 @@ int readAnalogAngle(int pin) {
   int angle = map(val, 0, 1023, 0, 270); 
   return angle;
 }
-
+//Prints the desired angles sent to moveServoSmooth/Mirrored to serial monitor
 void printDesiredAngles() {
   Serial.print(currentS1); Serial.print(" ");
   Serial.print(180 - currentS1); Serial.print(" ");
