@@ -1,5 +1,6 @@
+//This code is used to collect data form the servos
 #include <Servo.h>
-
+//Servo are created and postions are created
 Servo myServo, myServo2, myServo3, myServo4, myServo5, myServo6;
 
 const int HOME_S1 = 120, HOME_S3 = 45, HOME_S4 = 90, HOME_S5 = 34, HOME_S6 = 76;
@@ -9,60 +10,64 @@ const int GREEN_S1 = 120, GREEN_S3 = 23, GREEN_S4 = 90, GREEN_S5 = 34, GREEN_S6 
 const int BLUE_S1 = 120, BLUE_S3 = 67, BLUE_S4 = 90, BLUE_S5 = 34, BLUE_S6 = 0;
 
 int currentS1 = HOME_S1, currentS3 = HOME_S3, currentS4 = HOME_S4, currentS5 = HOME_S5, currentS6 = HOME_S6;
-
+//Created a function with reads feedback from the servo pins
 int readAnalogAngle(int pin) {
   int val = analogRead(pin);            
-  int angle = map(val, 0, 1023, 0, 180); 
+  int angle = map(val, 0, 1023, 0, 270); 
   return angle;
 }
-
+//Prints the gripper angle which dosen't have feedback pin
 void printGripperAngle() {
   Serial.println(currentS6); 
 }
 
-
+//Prints the data for in format for Excel so it can be easily copied
 void printForExcel() {
-  Serial.print(readAnalogAngle(A5)); 
+  // Serial.print(readAnalogAngle(A5)); 
+  // Serial.print(",");
+  // Serial.print(readAnalogAngle(A4)); 
+  // Serial.print(",");
+  // Serial.println(readAnalogAngle(A3)); 
+  // // Serial.print(",");
+  Serial.print(readAnalogAngle(A2)); 
   Serial.print(",");
-  Serial.println(readAnalogAngle(A4)); 
-  //Serial.print(",");
-  //Serial.println(readAnalogAngle(A3));
+  Serial.println(readAnalogAngle(A1));
 }
-
+//Same function from computer control increments servo angle but prints the angle aswell
 void moveServoSmooth(Servo &servo, int fromAngle, int toAngle, int stepDelay = 10) {
   if (fromAngle < toAngle) {
     for (int a = fromAngle; a <= toAngle; a++) {
       servo.write(a);
       delay(stepDelay);
-      //printForExcel();
-      printGripperAngle();
+      printForExcel();
+      //printGripperAngle();
     }
   } else {
     for (int a = fromAngle; a >= toAngle; a--) {
       servo.write(a);
       delay(stepDelay);
-      //printForExcel();
-      printGripperAngle();
+      printForExcel();
+      //printGripperAngle();
     }
   }
 }
-
+//Same function from computer control increments servo angle but prints the angle aswell
 void moveServoMirrored(Servo &s1, Servo &s2, int fromAngle, int toAngle, int stepDelay = 10) {
   if (fromAngle < toAngle) {
     for (int a = fromAngle; a <= toAngle; a++) {
       s1.write(a);
       s2.write(180 - a);
       delay(stepDelay);
-      //printForExcel();
-      printGripperAngle();
+      printForExcel();
+      //printGripperAngle();
     }
   } else {
     for (int a = fromAngle; a >= toAngle; a--) {
       s1.write(a);
       s2.write(180 - a);
       delay(stepDelay);
-      //printForExcel();
-      printGripperAngle();
+      printForExcel();
+      //printGripperAngle();
     }
   }
 }
@@ -74,30 +79,30 @@ void moveToPreset(int s1, int s3, int s4, int s5, int s6) {
   moveServoSmooth(myServo5, currentS5, s5); currentS5 = s5;
   moveServoSmooth(myServo6, currentS6, s6); currentS6 = s6;
 }
-
+//Creates the sequence to be changed for each colour
 void sequence() {
 moveToPreset(HOME_S1, HOME_S3, HOME_S4, HOME_S5, HOME_S6);
 moveToPreset(SCAN_S1, SCAN_S3, SCAN_S4, SCAN_S5, SCAN_S6);
 myServo6.write(0);
 
-moveToPreset(BLUE_S1, BLUE_S3, BLUE_S4, BLUE_S5, 0);
-moveToPreset(BLUE_S1, BLUE_S3, BLUE_S4, BLUE_S5, 0);
-moveToPreset(BLUE_S1 - 33, BLUE_S3, BLUE_S4, BLUE_S5, 0);
-moveToPreset(BLUE_S1 - 33, BLUE_S3, BLUE_S4, BLUE_S5, 130);
+moveToPreset(RED_S1, RED_S3, RED_S4, RED_S5, 0);
+moveToPreset(RED_S1, RED_S3, RED_S4, RED_S5, 0);
+moveToPreset(RED_S1 - 33, RED_S3, RED_S4, RED_S5, 0);
+moveToPreset(RED_S1 - 33, RED_S3, RED_S4, RED_S5, 130);
 
 moveToPreset(SCAN_S1, SCAN_S3, SCAN_S4, SCAN_S5, SCAN_S6);
 myServo6.write(0);
 
-moveToPreset(BLUE_S1, BLUE_S3 - 10, BLUE_S4, BLUE_S5, 0);
-moveToPreset(BLUE_S1 - 33, BLUE_S3 - 10, BLUE_S4, BLUE_S5, 0);
-moveToPreset(BLUE_S1 - 33, BLUE_S3 - 10, BLUE_S4, BLUE_S5, 130);
+moveToPreset(RED_S1, RED_S3 - 10, RED_S4, RED_S5, 0);
+moveToPreset(RED_S1 - 33, RED_S3 - 10, RED_S4, RED_S5, 0);
+moveToPreset(RED_S1 - 33, RED_S3 - 10, RED_S4, RED_S5, 130);
 
 moveToPreset(SCAN_S1, SCAN_S3, SCAN_S4, SCAN_S5, SCAN_S6);
 myServo6.write(0);
 
-moveToPreset(BLUE_S1, BLUE_S3 + 10, BLUE_S4, BLUE_S5, 0);
-moveToPreset(BLUE_S1 - 33, BLUE_S3 + 10, BLUE_S4, BLUE_S5, 0);
-moveToPreset(BLUE_S1 - 33, BLUE_S3 + 10, BLUE_S4, BLUE_S5, 130);
+moveToPreset(RED_S1, RED_S3 + 10, RED_S4, RED_S5, 0);
+moveToPreset(RED_S1 - 33, RED_S3 + 10, RED_S4, RED_S5, 0);
+moveToPreset(RED_S1 - 33, RED_S3 + 10, RED_S4, RED_S5, 130);
 
 moveToPreset(SCAN_S1, SCAN_S3, SCAN_S4, SCAN_S5, SCAN_S6);
  
@@ -114,7 +119,7 @@ void setup() {
   myServo6.attach(11);
   moveToPreset(HOME_S1, HOME_S3, HOME_S4, HOME_S5, HOME_S6);
 }
-
+//Serial command to intiate sequence
 void loop() {
   if (Serial.available()) {
     String cmd = Serial.readStringUntil('\n');
