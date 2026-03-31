@@ -19,8 +19,10 @@ The other state of the software is scan mode, responsible for the main function 
 Technical Details
 
 Tutorial blogs [1] and [2] provided a reference for writing code effectively for TC3200 and HC-SR04.
+
 [1] projecthub.arduino.cc. (n.d.). Color Detection Using TCS3200/230. [online] Available at:
 https://projecthub.arduino.cc/SurtrTech/color-detection-using-tcs3200230-a1e463 [Accessed 5 Jan. 2026].
+
 [2] projecthub.arduino.cc. (n.d.). Arduino Project Hub. [online] Available at: https://projecthub.arduino.cc/Isaac100/getting-started-with-the-hc-sr04-ultrasonic-sensor-7cabe1. [Accessed 5 Jan. 2026].
 
 Known Issues/Future Improvements
