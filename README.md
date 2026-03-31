@@ -24,4 +24,6 @@ https://projecthub.arduino.cc/SurtrTech/color-detection-using-tcs3200230-a1e463 
 [16] projecthub.arduino.cc. (n.d.). Arduino Project Hub. [online] Available at: https://projecthub.arduino.cc/Isaac100/getting-started-with-the-hc-sr04-ultrasonic-sensor-7cabe1. [Accessed 5 Jan. 2026].
 
 Known Issues/Future Improvements
+Future colours can be added. Implement reverse and forward kinematics
+HC-SR04 sensor readings has thresholds overlap. Same bricks gives inconsistent readings.
 
