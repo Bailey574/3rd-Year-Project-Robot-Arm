@@ -13,7 +13,7 @@ Use code computer control other codes are used for testing.
 Once the code is uploaded the user will enter a state machine will options servo control or scan mode, the block diagram belows show how each state works. Entering commands like changing each state, controlling servo angles and moving to preset location is done via the serial commands. The serial monitor also prints instructions on formatting commands on startup for users.
 <img width="881" height="1279" alt="image" src="https://github.com/user-attachments/assets/d0fe11b3-4f13-4cad-ab4e-ee12142d19a2" />
 
-The first state introduced control of each servo via computer using the serial monitor; the desired angle is typed, and the servo moves smoothly to this desired angle. Either a servo with angle is typed "servo1 76" or a location "red2. Type "servo" in serial to enter this state. By default robot moves to "home" state on startup and entering this state.
+The first state introduced control of each servo via computer using the serial monitor; the desired angle is typed, and the servo moves smoothly to this desired angle. Either a servo with angle is typed "servo1 76" or a location "red". Type "servo" in serial to enter this state. By default robot moves to "home" state on startup and entering this state.
 
 The other state of the software is scan mode, responsible for the main function of the robot to sort bricks by size and colour. Enter "scanmode" to enter this state. Place brick before entering this state. The robot will scan the the brick to identity size and colour, then the arm will pick up and place the correct location. Place another brick and enter "scanmode" to repeat.
 
